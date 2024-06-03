@@ -12,18 +12,15 @@ interface LibraryProps{
     songs:Song[];
 }
 const Library:React.FC<LibraryProps> = ({songs}) => {
-    const subscribeModal=useSubscribeModal();
     const authModal=useAuthModel();
     const uploadModal=useUploadModal();
-    const {user,subscription}=useUser();
+    const {user}=useUser();
     const onPlay=useOnPlay(songs);
         const onClick=()=>{
             if(!user){
                 return authModal.onOpen()
             }
-            if(!subscription){
-                return subscribeModal.onOpen();
-            }
+           
             return uploadModal.onOpen();
 
     };
